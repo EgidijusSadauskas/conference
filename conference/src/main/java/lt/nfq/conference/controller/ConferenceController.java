@@ -4,8 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+
 import lt.nfq.conference.domain.Conference;
 import lt.nfq.conference.service.ConferenceService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,7 @@ public class ConferenceController {
     @Autowired
     private ConferenceService conferenceService;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String list(ModelMap model) {
 
         SimpleDateFormat simpleDateFormat = getDateFormat();
@@ -56,18 +58,37 @@ public class ConferenceController {
 
         return "conference/items";
     }
-
-    @RequestMapping(value = "/create")
+    
+    
+    
+    @RequestMapping(value = "/create" ,method = RequestMethod.GET)
     public String create(ModelMap model) {
         model.addAttribute("conference", new Conference());
-        return "conference/form";
-    }
+        SimpleDateFormat simpleDateFormat = getDateFormat();
+        long timeNow = new Date().getTime();
 
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
+        String startDate = simpleDateFormat.format(timeNow);
+        String endDate = simpleDateFormat.format(timeNow + 1000 * 60 * 60 * 24 * 10); // + 10d
+        model.addAttribute("startDate", startDate);
+        model.addAttribute("endDate", endDate);
+        model.addAttribute("dateFormat", simpleDateFormat);
+        
+        return "conference/conferenceCreationForm";
+    }
+    
+    @RequestMapping(value ="/create/createConference",method=RequestMethod.POST)
+    public String createConference(ModelMap model){
+    	
+    	return "redirect:/conference/join?id=1";
+    }
+    
+    
+    
+    @RequestMapping(value = "/join", method = RequestMethod.GET)
     public String update(ModelMap model, @RequestParam(value = "id") int id) {
         model.addAttribute("conference", conferenceService.getConference(id));
         model.addAttribute("dateFormat", getDateFormat());
-        return "conference/form";
+        return "conference/signUpForm";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -83,8 +104,6 @@ public class ConferenceController {
         response.put("status", "ok");
         return response;
     }
-
-
     private SimpleDateFormat getDateFormat() {
         return new SimpleDateFormat("yyyy-MM-dd");
     }

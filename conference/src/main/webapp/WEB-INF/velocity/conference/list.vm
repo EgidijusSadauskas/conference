@@ -6,8 +6,14 @@
         #parse("blocks/head.vm")
     </head>
     <body>
+    	<header>
+    		<p>Conferences.Usually funny,sometimes boring.</p>
+    	</header>
+    	
+		#parse("loginForm.vm")
+		
         <form method="post" action="" id="filters">
-            <fieldset>
+            <fieldset id="searchFilter">
                 <legend>Search filter</legend>
                 <div class="formGroup">
                     <label for="filterStart">Start date</label>
@@ -16,6 +22,16 @@
                 <div class="formGroup">
                     <label for="filterEnd">End date</label>
                     <input type="text" name="end" value="$endDate" id="filterEnd" class="datePicker">
+                </div>
+                <div class="formGroup">
+                	<label for="category">Category</label>
+                	<select name="category" id="categoryList">
+                		<option value="">Choose category</option>
+					 	<option value="volvo">Programming</option>
+						<option value="saab">Math</option>
+						<option value="mercedes">Rocket Science</option>
+						<option value="audi">Agriculture</option>
+					</select>
                 </div>
                 <div class="formGroup">
                     <input type="submit" value="Search">
@@ -27,14 +43,24 @@
         <fieldset>
             <legend>Conference list:</legend>
             <div id="conference">
+            
                 #if ($conferenceList)
                     #parse("conference/items.vm")
                 #end
             </div>
+            	
+          
         </fieldset>
+       	<fieldset>
+       		<legend>Participating in these conferences:</legend>
+        		#if(true)
+            		#parse("conference/participatedConferences.vm")
+            	#end
+         </fieldset>
         <div id="conferenceForm"></div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="/resources/js/list.js"></script>
+        
     </body>
 </html>

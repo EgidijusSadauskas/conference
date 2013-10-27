@@ -1,28 +1,69 @@
+
+header{
+	font-size:50px;
+	border:solid 10px;
+	border-radius:20px;
+	
+}
+.menu{
+	float:left;
+	width:15%;
+	height: 400px;
+}
+fieldset{
+	background-image: -webkit-linear-gradient(top left, #FFFFFF 0%, #06060A 200%);
+	background-image: -moz-linear-gradient(top left, #FFFFFF 0%, #06060A 200%);
+}
+
 form {
     width: 200px;
 }
 
 form label {
-    display:block;
+    display:inline;
 }
 
 #filters {
-    width: 150px;
+   	width:100%;
 }
 
-.formGroup {
+.formGroup {	
     margin-top: 10px;
+    display:inline;
 }
-
+#filterStart{
+	margin-left:20px;
+}
+#filterEnd{
+	margin-left:20px;
+}
+#categoryList{
+	margin-left:20px;
+}
+#conference{
+	border : 1px solid black;
+}
 .conferenceList {
-    border: 1px solid #cccccc;
+	text-align:left;
+    border: 1px solid black;
 }
 
-.conferenceList th {
-    text-align: left;
+.conferenceList thead th {
+	 border: 1px solid black;
 }
 
 .conferenceList td,
 .conferenceList th {
-    border: 1px solid #cccccc;
+	width:30%;
+    border: 1px solid black;
 }
+.conferenceList #time{
+	width:15%;
+}
+#confCreation{
+	position:relative;	
+}
+
+
+
+
