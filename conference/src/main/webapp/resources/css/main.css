@@ -60,8 +60,12 @@ form label {
 .conferenceList #time{
 	width:15%;
 }
-#confCreation{
-	position:relative;	
+a#confCreation{
+	position:relative;
+}
+a#reg
+{
+	color:green;
 }
 
 

@@ -43,13 +43,11 @@
         <fieldset>
             <legend>Conference list:</legend>
             <div id="conference">
-            
                 #if ($conferenceList)
                     #parse("conference/items.vm")
                 #end
             </div>
-            	
-          
+    
         </fieldset>
        	<fieldset>
        		<legend>Participating in these conferences:</legend>
