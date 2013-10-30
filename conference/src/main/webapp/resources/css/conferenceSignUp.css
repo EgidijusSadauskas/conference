@@ -1,0 +1,70 @@
+
+header{
+	font-size:50px;
+	border:solid 10px;
+	border-radius:20px;
+	
+}
+.menu{
+	
+	width:30%;
+	height: 400px;
+}
+fieldset{
+	
+	background-image: -webkit-linear-gradient(top left, #FFFFFF 0%, #06060A 200%);
+	background-image: -moz-linear-gradient(top left, #FFFFFF 0%, #06060A 200%);
+}
+
+form {
+    width: 100%;
+}
+
+form label {
+    display:inline;
+}
+
+#filters {
+   	width:100%;
+}
+
+.formGroup {
+    height:50px;
+	
+}
+.formGroup label {
+	line-height:150%;
+	margin-left:2em;
+}
+.formGroup label[for=""]{
+	left:20%;
+	width:400px;
+	position:absolute;
+}
+
+#backbutton{
+	float:right;
+	width:80px;
+}
+.attendees{
+	border: 2px solid;	
+	width:inherit;
+	position:relative;
+}
+#attendees{
+	left:60%;
+	bottom:20em;
+	width:450px;	
+	position:relative;
+		
+}
+input[type=submit]{
+	width:100px;
+	height:30px;
+	background-color: lime;
+} 
+div.description{
+	margin-left:2em;
+	width:600px;
+	border:1px solid black;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" type="text/css">
+        <title>Registration form</title>
+        <link rel="stylesheet" href="/resources/css/registrationStyle.css" type="text/css">
+    </head>
+    <body>
+    	<header>
+    		<p>Conferences.Usually funny,sometimes boring.</p>
+    	</header>
+        <form method="post" action="/createConference" id="conf">
+            <fieldset>
+                <legend>Conference creation:</legend>
+                <div class="formGroup">
+                    <label for="confName">Conference name:</label></br>
+                    <input type="text" id="fullName" name="fullname"/></br>
+                </div>
+                 <div class="formGroup">
+                    <label for="startDate">Start date</label></br>
+                    <input type="text" name="start" value="$startDate" id="filterStart" class="datePicker"></br>
+                </div>
+                <div class="formGroup">
+                    <label for="endDatew">End date</label></br>
+                    <input type="text" name="end" value="$endDate" id="filterEnd" class="datePicker"></br>
+                </div>
+                <div class="formGroup">
+                	<label for="category">Category</label></br>
+                	<select name="category" id="categoryList">
+                		<option value="">Choose category</option>
+					 	<option value="Programming">Programming</option>
+						<option value="Math">Math</option>
+						<option value="RocketScience">Rocket Science</option>
+						<option value="Agriculture">Agriculture</option>
+					</select>
+					</br>
+                </div>
+                <div class="formGroup">
+                    <label for="location">Location:</label></br>
+                    <input type="text" id="location" name="location"/></br>
+                    </br>
+                </div>
+                
+                Description:</br>
+                <textarea rows="4" cols="50" name="comment" form="conf">Enter text here...
+                </textarea></br>
+                
+                <div class="formGroup">
+                    <input type="submit" value="Register" id="register">
+                </div>
+                
+                <a href="../conference/" ><img id="backbutton" src="/resources/images/back.png" width=64></a>   
+            </fieldset>
+            
+        </form>  	
+        
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        	<script src="/resources/js/list.js"></script>     
+
+    </body>
+</html>

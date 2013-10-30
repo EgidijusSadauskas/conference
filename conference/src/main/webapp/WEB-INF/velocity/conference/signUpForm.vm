@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Conference sign</title>
+        <link rel="stylesheet" href="/resources/css/conferenceSignUp.css" type="text/css">
+    </head>
+    <body>
+    	<header>
+    		<p>Conferences.Usually funny,sometimes boring.</p>
+    	</header>
+            <fieldset id="info">
+                <legend>Conference info</legend>
+                <div class="formGroup">
+                    <label for="confName">Conference name:</label>
+                    <label for="">$conference.getName()</label></br>
+                </div>
+                 <div class="formGroup">
+                    <label for="startDate">Start date</label>
+                    <label for="">$conference.getStartDate()</label></br>
+                </div>
+                <div class="formGroup">
+                    <label for="endDatew">End date</label>
+                    <label for="">$conference.getEndDate()</label></br>
+                </div>
+                <div class="formGroup">
+                	<label for="category">Category</label>
+                	<label for="">$conference.getCategory()</label></br>
+                </div>
+                <div class="formGroup">
+                    <label for="location">Location:</label>
+                    <label for="">$conference.getLocation()</label></br>
+                </div>
+                <div class="description">
+	                <label for="desc">Description:</label></br>
+	                <label for="desc">$conference.getDescription() </label></br>
+                </div>
+                 
+                <fieldset id="attendees">
+            	 	<legend>Attendees</legend>
+            	 	#parse("conference/attendees.vm")
+            	</fieldset>
+            	
+				 <form method="post" action="/signUp">
+	        		<div class="formGroup">
+	                    <input type="submit" value="Sign Up" id="signup">
+	                </div> 
+       			 </form>
+
+                <a href="../conference/" ><img id="backbutton" src="/resources/images/back.png" width=128></a>   
+            </fieldset>            
+       
+          	
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        	<script src="/resources/js/list.js"></script>     
+
+    </body>
+</html>
