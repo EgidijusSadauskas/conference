@@ -44,14 +44,10 @@ public class RegistrationController {
 	@RequestMapping(value="/register" ,method = RequestMethod.POST)
 	public String register(Model model, Member member ,BindingResult result){
 		
-		for (ObjectError error : result.getAllErrors()) {
-			System.out.println(error.toString());
-		}
-		
-		
 		Errors errors = new BindException(result);
-		Validator memberValidator = new MemberValidator();
-		memberValidator.validate(member, (Errors)errors);
+		MemberValidator memberValidator = new MemberValidator();
+		
+		memberValidator.validate(member, (Errors)errors,memberService);
 		
 		System.out.println(member.getFullName());
 		System.out.println(member.getCountry());
@@ -60,15 +56,14 @@ public class RegistrationController {
 		System.out.println(member.getUserName());
 		System.out.println(member.getEmailAddress());
 		
-		for (ObjectError error : errors.getAllErrors()) {
-			System.out.println(error.toString());
+		if (errors.getAllErrors().size() > 0){
+			model.addAttribute("errorList",errors.getAllErrors());
+			model.addAttribute("member", member);
+			return "registrationForm";
+		}else{
+			memberService.saveMember(member);
+			return "redirect:/conference/";
 		}
-
-		
-		memberService.saveMember(member);
-		
-		
-		return "redirect:/conference/";
 	}
 	@ModelAttribute
 	public Member newRequest() {

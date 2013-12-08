@@ -12,6 +12,13 @@
         <form method="post" action="/register" object="#{Member}">
             <fieldset>
                 <legend>User registration:</legend>
+                
+                  <p style="color:red">
+                #foreach($error in $errorList)
+                	$error.defaultMessage </br>
+                #end
+                </p>
+                
                 <div class="formGroup">
                     <label for="fullname">Full name:</label></br>
                     #springFormInput("member.fullName" "")</br>
@@ -34,7 +41,7 @@
                 </div>
                 <div class="formGroup">
                     <label for="pass">Password:</label></br>
-                    #springFormInput("member.password" "")</br>	
+                    #springFormPasswordInput("member.password" "")</br>	
                 </div>
                 <div class="formGroup">
                     <input type="submit" value="Register" id="register">

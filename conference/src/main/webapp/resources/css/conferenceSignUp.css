@@ -62,6 +62,9 @@ input[type=submit]{
 	width:100px;
 	height:30px;
 	background-color: lime;
+}
+#exit{
+	background-color: red;
 } 
 div.description{
 	margin-left:2em;

@@ -58,7 +58,13 @@ public class ConferenceController {
         model.addAttribute("endDate", endDate);
         model.addAttribute("dateFormat", simpleDateFormat);
         model.addAttribute("categoryList",categoryService.getAllCategories());
-        model.addAttribute("participatingConferencesList", conferenceService.getParticipatedCategories(1));
+       
+        if (model.get("sessionUsername") != null){
+        	System.out.println("Egzistuoja sesija");
+        	List<Conference> lt = conferenceService.getParticipatedConferences((int)model.get("sessionId"));
+        	System.out.println("Conferenciju kiekis = "+lt.size());
+        	model.addAttribute("participatingConferencesList", conferenceService.getParticipatedConferences((int)model.get("sessionId")));
+    	}
 
         try {
             model.addAttribute("conferenceList", conferenceService.getConferencesByDates(simpleDateFormat.parse(startDate), simpleDateFormat.parse(endDate)));
@@ -73,12 +79,15 @@ public class ConferenceController {
     public String filterList(ModelMap model,
                              @RequestParam(value = "start") Date start,
                              @RequestParam(value = "end") Date end,
-                             @RequestParam(value = "category" , required = false) String category) {
+                             @RequestParam(value = "category") int category) {
     	
-    		
-    		System.out.println("Categorijos id="+category);
     
+    	if(category == 0){
     		model.addAttribute("conferenceList", conferenceService.getConferencesByDates(start, end));
+    	}else{
+    		model.addAttribute("conferenceList", conferenceService.getConferencesByDatesAndCategory(start, end,category));
+    	}
+    	
     	
         model.addAttribute("dateFormat", getDateFormat());
 
@@ -89,7 +98,12 @@ public class ConferenceController {
     
     @RequestMapping(value = "/create" ,method = RequestMethod.GET)
     public String create(ModelMap model) {
-        model.addAttribute("conference", new Conference());
+        
+    	if (model.get("sessionUsername") == null){
+        	return "redirect:/";
+        }
+    	
+    	model.addAttribute("conference", new Conference());
         SimpleDateFormat simpleDateFormat = getDateFormat();
         long timeNow = new Date().getTime();
 
@@ -106,24 +120,16 @@ public class ConferenceController {
     public String createConference(ModelMap model ,
     		 Conference conference,BindingResult result){
     	
-    	Errors errors = new BindException(result);
-    	
-    	ConferenceValidator conferenceValidator = new ConferenceValidator();
-    	
-    	
-    	System.out.println("=======FIELDAI\n");
-    	System.out.println(conference.getCategoryName());
-    	System.out.println(conference.getConferenceName());
-    	System.out.println(conference.getDescription());
-    	System.out.println(conference.getLocation());
-    	conferenceValidator.validate(conference, errors);
-    	System.out.println("Viso klaidu="+errors.getErrorCount());
-    	
-    	
-    	for(ObjectError er : errors.getAllErrors()){
-    		System.out.println("Klaida"+er.getCode()+":"+er.getDefaultMessage());	
+    	if (model.get("sessionUsername") == null){
+    		return "redirect:/";
     	}
+    	conference.setOwnerId((int) model.get("sessionId"));
     	
+    	
+    	Errors errors = new BindException(result);
+    	ConferenceValidator conferenceValidator = new ConferenceValidator();
+    	conferenceValidator.validate(conference, errors);
+ 	
     	if (errors.getErrorCount() > 0){
     		SimpleDateFormat simpleDateFormat = getDateFormat();
     		model.addAttribute("errorList",errors.getAllErrors());
@@ -143,12 +149,39 @@ public class ConferenceController {
     
     @RequestMapping(value = "/join", method = RequestMethod.GET)
     public String update(ModelMap model, @RequestParam(value = "id") int id) {
-        model.addAttribute("conference", conferenceService.getConference(id));
+        if (model.get("sessionUsername") == null)
+        	return "redirect:/";
+
+        model.addAttribute("userId",model.get("sessionId"));
+    	model.addAttribute("conference", conferenceService.getConference(id));
         model.addAttribute("attendeesList",memberService.getParticipants(id));
         model.addAttribute("dateFormat", getDateFormat());
+        
+        if (conferenceService.isAlreadyParticipating((int)model.get("sessionId"),id) > 0){
+        	model.addAttribute("alreadyParticipating", true);
+        	
+        }
         return "conference/signUpForm";
     }
-
+    @RequestMapping(value ="/signUp" ,method = RequestMethod.POST)
+    public String signUp(ModelMap model,@RequestParam(value = "hiddenUserId") int userId,
+    		@RequestParam("hiddenConferenceId") int conferenceId){	
+    	
+    	if (conferenceService.checkConferenceIfExists(conferenceId) > 0){
+    		conferenceService.addAttendant(userId,conferenceId);
+    	}
+    	
+    	return "redirect:/";
+    }
+    @RequestMapping(value="/exit")
+    public String exit(ModelMap model,@RequestParam("id")int id){
+    	if(model.get("sessionUsername") == null)
+    		return "redirect:/";
+    	
+    	conferenceService.exitConference((int)model.get("sessionId"),id);
+    	
+    	return "redirect:/";
+    }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public
     @ResponseBody
@@ -162,21 +195,32 @@ public class ConferenceController {
         response.put("status", "ok");
         return response;
     }
+    
     private SimpleDateFormat getDateFormat() {
         return new SimpleDateFormat("yyyy-MM-dd");
     }
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
+    	
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
     
     @ModelAttribute
-	public Conference newRequest() {
-		return new Conference();
+	public Conference newRequest(ModelMap model) {
+    	 
+    	if (model.get("sessionUsername") != null)
+		{
+    		List<Conference> list = conferenceService.getParticipatedConferences((int)model.get("sessionId"));
+    		
+    		System.out.println("joinina i ="+list.size());
+			model.addAttribute("participatingConferencesList", conferenceService.getParticipatedConferences((int)model.get("sessionId")));
+		}
+    	return new Conference();
 	}
+    
 
 
 }

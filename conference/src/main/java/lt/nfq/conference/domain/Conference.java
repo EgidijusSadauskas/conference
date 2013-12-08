@@ -11,14 +11,14 @@ public class Conference {
     private String location;
     private String description;
     private int ownerId;
-    private String categoryName;
+    private String category;
 
-    public String getCategoryName() {
-		return categoryName;
+    public String getCategory() {
+		return category;
 	}
 
-	public void setCategoryName(String category) {
-		this.categoryName = category;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getConferenceName () {

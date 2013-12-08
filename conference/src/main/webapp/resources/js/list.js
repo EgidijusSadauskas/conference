@@ -8,7 +8,8 @@
             url: "/conference/list",
             data: {
                 start: jQuery("#filterStart").val(),
-                end: jQuery("#filterEnd").val()
+                end: jQuery("#filterEnd").val(),
+                category : jQuery("#category").val()
             },
             success: function( data ) {
                 jQuery( "#conference" ).html( data );

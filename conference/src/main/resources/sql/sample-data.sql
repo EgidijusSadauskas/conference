@@ -26,7 +26,13 @@ INSERT INTO conference_categories(conferenceId,categoryId) VALUES (5,5);
 INSERT INTO conference_attendees(conferenceId,userId) VALUES(4,1);
 INSERT INTO conference_attendees(conferenceId,userId) VALUES(5,1);
 INSERT INTO conference_attendees(conferenceId,userId) VALUES(2,1);
+INSERT INTO conference_attendees(conferenceId,userId) VALUES(4,7);
+INSERT INTO conference_attendees(conferenceId,userId) VALUES(5,7);
+INSERT INTO conference_attendees(conferenceId,userId) VALUES(1,7);
+INSERT INTO conference_attendees(conferenceId,userId) VALUES(1,8);
 
-INSERT INTO members(id,fullName,emailAddress,town,country,userName,password) VALUES(1,'Egidijus','Testas@test.test','townhole','countryvile','usher','hasg@');
-
+INSERT INTO conferences VALUES(7,'pirmojikonferencija','ls','pirmoji legit sukurta','2013-12-08 00:00:00.000000','2013-12-18 00:00:00.000000',8);
+INSERT INTO members VALUES(8,'egidijus1','ramzzvi@gmail.com','kaunas','LS','rockas','1e6efed8a8e02519be6822a7851bb71d');
+INSERT INTO conference_categories VALUES (7,2);
+INSERT INTO MEMBERS VALUES(13,'omgazauras','ramzzvi@gmail.com','kaunas','LS','aaaaaaaaaa','e09c80c42fda55f9d992e59ca6b3307d');
 COMMIT;

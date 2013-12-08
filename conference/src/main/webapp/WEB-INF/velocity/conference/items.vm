@@ -16,7 +16,7 @@
                 <td>$conference.conferenceName</td>
                 <td id="time">$conference.getStartDate($dateFormat)</td>
                 <td id="time">$conference.getEndDate($dateFormat)</td>
-                <td>$conference.categoryName</td>
+                <td>$conference.category</td>
                 <td>$conference.location</td>
                 <td><a href="/conference/join?id=$conference.conferenceId" class="join">Participate</a></td>
             </tr>

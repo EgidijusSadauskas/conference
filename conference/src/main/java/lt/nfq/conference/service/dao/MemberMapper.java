@@ -22,5 +22,9 @@ public interface MemberMapper {
 	@Insert("INSERT INTO members (fullName,emailAddress,town,country,userName,password) VALUES(#{fullName},#{emailAddress},#{town},#{country},#{userName},#{password})")
 	@SelectKey(statement="CALL IDENTITY()", keyProperty="id", before=false, resultType=int.class)
 	public void insertMember(Member member);
+	
+	@Select("SELECT COUNT(*) FROM members where userName=#{userName}")
+	public int checkIfExists(@Param("userName")String userName);
+	
 }
 

@@ -11,13 +11,7 @@
                 </div>
                 <div class="formGroup">
                 	<label for="filterCategory">Category</label>
-                		<select name="category" id="category">
-	     					#if($categoryList)
-	          					#foreach($category in $categoryList)
-	                			<option value="$category.categoryId">$category.categoryName</option>
-	         					 #end
-	     					#end	
-						</select>
+                		#parse("category/categoryList.vm")
                 	
                 </div>
                 <div class="formGroup">

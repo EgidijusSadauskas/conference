@@ -41,7 +41,7 @@ public class ConferenceValidator implements Validator {
 		
 		// Validating Conference category
 		try{
-			int tmpId = Integer.parseInt(conference.getCategoryName());
+			int tmpId = Integer.parseInt(conference.getCategory());
 		}catch(NumberFormatException e){
 			errors.reject("category","unknown category");
 		}

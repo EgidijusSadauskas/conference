@@ -25,7 +25,7 @@
         </fieldset>
        	<fieldset>
        		<legend>Participating in these conferences:</legend>
-        		#if(true)
+        		#if($sessionUsername)
             		#parse("conference/participatedConferences.vm")
             	#end
          </fieldset>

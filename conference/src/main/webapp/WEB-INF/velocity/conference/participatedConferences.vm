@@ -1,4 +1,4 @@
-
+#if ($participatingConferencesList.size() > 0)	
     <table class="conferenceList">
        <thead>
         <tr>
@@ -7,21 +7,22 @@
             <th id="time">Ends</th>
             <th id>Category</th>
             <th id>Location</th>
-            
+            <th id> </th>    
         </tr> 
         </thead>
         <tbody>
-        #if ($participatingConferencesList)
+        
    			 #foreach($participatedConference in $participatingConferencesList)
-            <tr data-id="1">
-                <td>$participatedConference.conferenceName</td>
-                <td id="time">$participatedConference.getStartDate($dateFormat)</td>
-                <td id="time">$participatedConference.getEndDate($dateFormat)</td>
-                <td> $participatedConference.categoryName</td>
-                <td>$participatedConference.location</td>
-                
-            </tr>
-            #end
-          #end
+	            <tr data-id="1">
+	                <td>$participatedConference.conferenceName</td>
+	                <td id="time">$participatedConference.getStartDate($dateFormat)</td>
+	                <td id="time">$participatedConference.getEndDate($dateFormat)</td>
+	                <td> $participatedConference.category</td>
+	                <td>$participatedConference.location</td>
+	                <td><a href="exit?id=$participatedConference.conferenceId">Exit</a></td>    
+	            </tr>
+             #end
+          
         </tbody>
     </table>
+#end

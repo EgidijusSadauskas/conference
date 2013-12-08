@@ -10,41 +10,55 @@
     	</header>
             <fieldset id="info">
                 <legend>Conference info</legend>
+                $conference.conferenceId 
+                $userId
+                
                 <div class="formGroup">
                     <label for="confName">Conference name:</label>
-                    <label for="">$conference.getConferenceName()</label></br>
+                    <label for="">$conference.conferenceName</label></br>
                 </div>
                  <div class="formGroup">
                     <label for="startDate">Start date</label>
-                    <label for="">$conference.getStartDate()</label></br>
+                    <label for="">$conference.startDate</label></br>
                 </div>
                 <div class="formGroup">
                     <label for="endDatew">End date</label>
-                    <label for="">$conference.getEndDate()</label></br>
+                    <label for="">$conference.endDate</label></br>
                 </div>
                 <div class="formGroup">
                 	<label for="category">Category</label>
-                	<label for="">$conference.categoryName</label></br>
+                	<label for="">$conference.category</label></br>
                 </div>
                 <div class="formGroup">
                     <label for="location">Location:</label>
-                    <label for="">$conference.getLocation()</label></br>
+                    <label for="">$conference.location</label></br>
                 </div>
                 <div class="description">
 	                <label for="desc">Description:</label></br>
-	                <label for="desc">$conference.getDescription() </label></br>
+	                <label for="desc">$conference.description </label></br>
                 </div>
                  
                 <fieldset id="attendees">
             	 	<legend>Attendees</legend>
             	 	#parse("conference/attendees.vm")
             	</fieldset>
-            	
-				 <form method="post" action="/signUp">
-	        		<div class="formGroup">
-	                    <input type="submit" value="Sign Up" id="signup">
-	                </div> 
-       			 </form>
+            	#if($alreadyParticipating)
+            		<form method="post" action="exit">
+	                	<input type="hidden" name="id" value="$conference.conferenceId">
+		        		<div class="exitGroup">
+		                    <input type="submit" value="Exit" id="exit">
+		                </div> 
+       			 	</form>	
+            	#else	
+            		<form method="post" action="signUp">
+		        		<input type="hidden" name="hiddenUserId" id="hiddenUserId" value="$userId">
+	                	<input type="hidden" name="hiddenConferenceId" value="$conference.conferenceId">
+		        		<div class="formGroup">
+		                    <input type="submit" value="Sign Up" id="signup">
+		                </div> 
+       			 	</form>	
+            	#end
+				 
 
                 <a href="../conference/" ><img id="backbutton" src="/resources/images/back.png" width=128></a>   
             </fieldset>            

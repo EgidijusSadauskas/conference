@@ -13,12 +13,10 @@
         <form method="post" action="createConference" id="conf" object = #{Conference}>
             <fieldset>
                 <legend>Conference creation:</legend>
-                
                 <p style="color:red">
                 #foreach($error in $errorList)
                 	$error.defaultMessage </br>
                 #end
-                	kazkas
                 </p>
                 
                 </br>
