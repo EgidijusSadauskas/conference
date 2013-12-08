@@ -4,28 +4,29 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Conference {
-    private Integer id;
-    private String name;
+    private Integer conferenceId;
+    private String conferenceName;
     private Date startDate;
     private Date endDate;
-    private String category;
     private String location;
     private String description;
+    private int ownerId;
+    private String categoryName;
 
-    public Integer getId() {
-        return id;
+    public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String category) {
+		this.categoryName = category;
+	}
+
+	public String getConferenceName () {
+        return conferenceName;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName () {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setConferenceName(String name) {
+        this.conferenceName = name;
     }
 
     public Date getStartDate() {
@@ -50,12 +51,6 @@ public class Conference {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-    public String getCategory(){
-    	return category;
-    }
-    public void setCategory(String category){
-    	this.category = category;
-    }
     public String getLocation(){
     	return this.location;
     }
@@ -68,6 +63,23 @@ public class Conference {
     public void setDescription(String description){
     	this.description = description;
     }
+
+	public Integer getConferenceId() {
+		return conferenceId;
+	}
+
+	public void setConferenceId(Integer conferenceId) {
+		this.conferenceId = conferenceId;
+	}
+
+	public int getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
+	}
+    
     
 
 

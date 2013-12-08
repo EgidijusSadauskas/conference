@@ -1,20 +1,80 @@
 package lt.nfq.conference.controller;
 
 
+import java.security.MessageDigest;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.validation.Valid;
+
+import lt.nfq.conference.controller.PlainConferenceController.Form;
+import lt.nfq.conference.domain.Conference;
+import lt.nfq.conference.domain.Member;
+import lt.nfq.conference.service.MemberService;
+import lt.nfq.conference.service.validation.MemberValidator;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/")
 public class RegistrationController {
 	
+	@Autowired
+	private MemberService memberService;
+	
 	@RequestMapping(value="/register" ,method = RequestMethod.GET)
 	public String registerForm(){
 		return "registrationForm";
 	}
+	
+
 	@RequestMapping(value="/register" ,method = RequestMethod.POST)
-	public String register(){
+	public String register(Model model, Member member ,BindingResult result){
+		
+		for (ObjectError error : result.getAllErrors()) {
+			System.out.println(error.toString());
+		}
+		
+		
+		Errors errors = new BindException(result);
+		Validator memberValidator = new MemberValidator();
+		memberValidator.validate(member, (Errors)errors);
+		
+		System.out.println(member.getFullName());
+		System.out.println(member.getCountry());
+		System.out.println(member.getTown());
+		System.out.println(member.getPassword());
+		System.out.println(member.getUserName());
+		System.out.println(member.getEmailAddress());
+		
+		for (ObjectError error : errors.getAllErrors()) {
+			System.out.println(error.toString());
+		}
+
+		
+		memberService.saveMember(member);
+		
+		
 		return "redirect:/conference/";
 	}
+	@ModelAttribute
+	public Member newRequest() {
+		return new Member();
+	}
+	
+	
+	
 }

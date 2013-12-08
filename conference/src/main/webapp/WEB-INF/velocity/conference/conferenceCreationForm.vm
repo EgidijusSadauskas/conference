@@ -9,40 +9,44 @@
     	<header>
     		<p>Conferences.Usually funny,sometimes boring.</p>
     	</header>
-        <form method="post" action="/createConference" id="conf">
+    	
+        <form method="post" action="createConference" id="conf" object = #{Conference}>
             <fieldset>
                 <legend>Conference creation:</legend>
+                
+                <p style="color:red">
+                #foreach($error in $errorList)
+                	$error.defaultMessage </br>
+                #end
+                	kazkas
+                </p>
+                
+                </br>
                 <div class="formGroup">
                     <label for="confName">Conference name:</label></br>
-                    <input type="text" id="fullName" name="fullname"/></br>
+                    #springFormInput("conference.conferenceName" "")</br>
                 </div>
                  <div class="formGroup">
                     <label for="startDate">Start date</label></br>
-                    <input type="text" name="start" value="$startDate" id="filterStart" class="datePicker"></br>
+                    <input type="text" name="startDate" value="$startDate" id="filterStart" class="datePicker"></br>
                 </div>
                 <div class="formGroup">
-                    <label for="endDatew">End date</label></br>
-                    <input type="text" name="end" value="$endDate" id="filterEnd" class="datePicker"></br>
+                    <label for="endDate">End date</label></br>
+                    <input type="text" name="endDate" value="$endDate" id="filterEnd" class="datePicker"></br>
                 </div>
-                <div class="formGroup">
+                 <div class="formGroup">
                 	<label for="category">Category</label></br>
-                	<select name="category" id="categoryList">
-                		<option value="">Choose category</option>
-					 	<option value="Programming">Programming</option>
-						<option value="Math">Math</option>
-						<option value="RocketScience">Rocket Science</option>
-						<option value="Agriculture">Agriculture</option>
-					</select>
+                	#parse("category/categoryList.vm")
 					</br>
                 </div>
                 <div class="formGroup">
                     <label for="location">Location:</label></br>
-                    <input type="text" id="location" name="location"/></br>
+                    #springFormInput("conference.location" "") </br>
                     </br>
                 </div>
                 
                 Description:</br>
-                <textarea rows="4" cols="50" name="comment" form="conf">Enter text here...
+                <textarea rows="4" cols="50" name="description" form="conf">Enter text here...
                 </textarea></br>
                 
                 <div class="formGroup">
@@ -53,6 +57,7 @@
             </fieldset>
             
         </form>  	
+        
         
 			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>

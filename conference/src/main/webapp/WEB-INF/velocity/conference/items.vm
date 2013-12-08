@@ -12,13 +12,13 @@
         </thead>
         <tbody>
             #foreach($conference in $conferenceList)
-            <tr data-id="$conference.getId()">
-                <td>$conference.getName()</td>
+            <tr data-id="$conference.conferenceId">
+                <td>$conference.conferenceName</td>
                 <td id="time">$conference.getStartDate($dateFormat)</td>
                 <td id="time">$conference.getEndDate($dateFormat)</td>
-                <td>$conference.getCategory()</td>
-                <td>$conference.getLocation()</td>
-                <td><a href="/conference/join?id=$conference.getId()" class="join">Participate</a></td>
+                <td>$conference.categoryName</td>
+                <td>$conference.location</td>
+                <td><a href="/conference/join?id=$conference.conferenceId" class="join">Participate</a></td>
             </tr>
             #end
         </tbody>

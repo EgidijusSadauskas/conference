@@ -1,12 +1,32 @@
+TRUNCATE SCHEMA public AND COMMIT;
 
 INSERT INTO demo (id, data) VALUES (1, 'Hello, world!');
 INSERT INTO demo (id, data) VALUES (2, 'Hello, world again!');
 INSERT INTO demo (id, data) VALUES (3, 'Hello, world for the third time!');
 
-INSERT INTO conference (id, name,category,location ,description, startDate, endDate) VALUES (1, 'NFQ Akademijos atidarymas. Įvadas į šiuolaikinio programuotojo darbą','Programming','lietuva','neblogas bus atidarymas. Turesim galimybe praktiškai pamatyti teoriją ir teoriškai pamatyti praktiką. Atliekamas šio elemento dydžio patikrinimas' ,'2013-09-30 17:00:00', '2013-09-30 18:00:00');
-INSERT INTO conference (id, name,category,location ,description, startDate, endDate) VALUES (2, 'Projekto valdymas ir Agile','Programming','lietuva','neblogas bus atidarymas', '2013-10-02 17:00:00', '2013-10-02 18:00:00');
-INSERT INTO conference (id, name,category,location ,description, startDate, endDate) VALUES (3, 'J2EE programavimui naudojami įrankiai','Programming','lietuva','neblogas bus atidarymas', '2013-10-07 17:00:00', '2013-10-07 18:00:00');
-INSERT INTO conference (id, name,category,location ,description, startDate, endDate) VALUES (4, 'Web puslapių vartotojo sąsajos kūrimas (1-a dalis)','Programming','lietuva','neblogas bus atidarymas', '2013-10-09 17:00:00', '2013-10-09 18:00:00');
-INSERT INTO conference (id, name,category,location ,description, startDate, endDate) VALUES (5, 'Raketos sumontavimas iš produktų esančių jūsų namo rūsyje','Rocket Science','lietuva','Skrisim', '2013-10-08 17:00:00', '2013-10-09 19:00:00');
+INSERT INTO conferences (conferenceId, conferenceName,location ,description, startDate, endDate,ownerId) VALUES (1, 'NFQ Akademijos atidarymas. Įvadas į šiuolaikinio programuotojo darbą','lietuva','neblogas bus atidarymas. Turesim galimybe praktiškai pamatyti teoriją ir teoriškai pamatyti praktiką. Atliekamas šio elemento dydžio patikrinimas' ,'2013-09-30 17:00:00', '2013-09-30 18:00:00',1);
+INSERT INTO conferences (conferenceId, conferenceName,location ,description, startDate, endDate,ownerId) VALUES (2, 'Projekto valdymas ir Agile','lietuva','neblogas bus atidarymas', '2013-10-02 17:00:00', '2013-10-02 18:00:00',1);
+INSERT INTO conferences (conferenceId, conferenceName,location ,description, startDate, endDate,ownerId) VALUES (3, 'J2EE programavimui naudojami įrankiai','lietuva','neblogas bus atidarymas', '2013-10-07 17:00:00', '2013-10-07 18:00:00',1);
+INSERT INTO conferences (conferenceId, conferenceName,location ,description, startDate, endDate,ownerId) VALUES (4, 'Web puslapių vartotojo sąsajos kūrimas (1-a dalis)','lietuva','neblogas bus atidarymas', '2013-10-09 17:00:00', '2013-10-09 18:00:00',1);
+INSERT INTO conferences (conferenceId, conferenceName,location ,description, startDate, endDate,ownerId) VALUES (5, 'Raketos sumontavimas iš produktų esančių jūsų namo rūsyje','lietuva','Skrisim', '2013-10-08 17:00:00', '2013-10-09 19:00:00',1);
+
+
+INSERT INTO categories (categoryId,categoryName) VALUES (1,'Programming');
+INSERT INTO categories (categoryId,categoryName) VALUES (2,'Rocket science');
+INSERT INTO categories (categoryId,categoryName) VALUES (3,'Technical engineering');
+INSERT INTO categories (categoryId,categoryName) VALUES (4,'Lecture');
+INSERT INTO categories (categoryId,categoryName) VALUES (5,'Testing');
+
+INSERT INTO conference_categories(conferenceId,categoryId) VALUES (1,1);
+INSERT INTO conference_categories(conferenceId,categoryId) VALUES (2,3);
+INSERT INTO conference_categories(conferenceId,categoryId) VALUES (3,2);
+INSERT INTO conference_categories(conferenceId,categoryId) VALUES (4,1);
+INSERT INTO conference_categories(conferenceId,categoryId) VALUES (5,5);
+
+INSERT INTO conference_attendees(conferenceId,userId) VALUES(4,1);
+INSERT INTO conference_attendees(conferenceId,userId) VALUES(5,1);
+INSERT INTO conference_attendees(conferenceId,userId) VALUES(2,1);
+
+INSERT INTO members(id,fullName,emailAddress,town,country,userName,password) VALUES(1,'Egidijus','Testas@test.test','townhole','countryvile','usher','hasg@');
 
 COMMIT;

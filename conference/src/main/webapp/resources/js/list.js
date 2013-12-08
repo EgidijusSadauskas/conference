@@ -1,7 +1,7 @@
 (function( jQuery, window, undefined ) {
     jQuery( ".datePicker" ).datepicker({dateFormat:"yy-mm-dd"});
-
-    jQuery("form").submit(function (e) {
+     
+    jQuery("form#filters").submit(function (e) {
         e.preventDefault();
         jQuery.ajax({
             type: "post",

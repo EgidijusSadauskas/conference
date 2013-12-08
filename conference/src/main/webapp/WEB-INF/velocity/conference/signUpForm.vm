@@ -12,7 +12,7 @@
                 <legend>Conference info</legend>
                 <div class="formGroup">
                     <label for="confName">Conference name:</label>
-                    <label for="">$conference.getName()</label></br>
+                    <label for="">$conference.getConferenceName()</label></br>
                 </div>
                  <div class="formGroup">
                     <label for="startDate">Start date</label>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="formGroup">
                 	<label for="category">Category</label>
-                	<label for="">$conference.getCategory()</label></br>
+                	<label for="">$conference.categoryName</label></br>
                 </div>
                 <div class="formGroup">
                     <label for="location">Location:</label>

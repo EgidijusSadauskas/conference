@@ -15,7 +15,8 @@
     <mvc:resources mapping="/resources/**" location="/resources/" />
     <mvc:resources mapping="/html/**" location="/html/" />
     <context:component-scan base-package="lt.nfq.conference.controller" />
-
+	
+	
     <mvc:annotation-driven />
     <mvc:interceptors>
     <bean id="webContentInterceptor" 

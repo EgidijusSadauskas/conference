@@ -9,16 +9,16 @@
     	<header>
     		<p>Conferences.Usually funny,sometimes boring.</p>
     	</header>
-        <form method="post" action="/register">
+        <form method="post" action="/register" object="#{Member}">
             <fieldset>
                 <legend>User registration:</legend>
                 <div class="formGroup">
                     <label for="fullname">Full name:</label></br>
-                    <input type="text" id="fullName" name="fullname"/></br>
+                    #springFormInput("member.fullName" "")</br>
                 </div>
                 <div class="formGroup">
                     <label for="email">Email address:</label></br>
-                    <input type="email" id="emailAddress" name="email"/></br>
+                    #springFormInput("member.emailAddress" "")</br>
                 </div>
                 <div class="formGroup">
                     <label for="country">Country:</label></br>
@@ -26,15 +26,15 @@
                 </div>
                 <div class="formGroup">
                     <label for="town">Town:</label></br>
-                    <input type="text" id="town" name="town"/></br>
+                    #springFormInput("member.town" "")</br>
                 </div>
                 <div class="formGroup">
                     <label for="username">Username:</label></br>
-                    <input type="text" id="town" name="town"/></br>
+                    #springFormInput("member.userName" "")</br>
                 </div>
                 <div class="formGroup">
                     <label for="pass">Password:</label></br>
-                    <input type="password" id="town" name="town"/></br>	
+                    #springFormInput("member.password" "")</br>	
                 </div>
                 <div class="formGroup">
                     <input type="submit" value="Register" id="register">

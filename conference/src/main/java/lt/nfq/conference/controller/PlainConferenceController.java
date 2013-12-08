@@ -38,21 +38,21 @@ public class PlainConferenceController {
 	    }
 
 	    public Integer getId() {
-	        return conference.getId();
+	        return conference.getConferenceId();
 	    }
 
 	    public void setId(Integer id) {
-	        conference.setId(id);;
+	        conference.setConferenceId(id);;
 	    }
 
 	    @NotNull
 	    @Size(min = 1, max = 100)
 	    public String getName () {
-	        return conference.getName();
+	        return conference.getConferenceName();
 	    }
 
 	    public void setName(String name) {
-	        conference.setName(name);
+	        conference.setConferenceName(name);
 	    }
 
 	    @NotNull

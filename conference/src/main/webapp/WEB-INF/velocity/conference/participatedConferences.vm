@@ -1,6 +1,6 @@
-#if (true)
+
     <table class="conferenceList">
-        <thead>
+       <thead>
         <tr>
             <th id>Conference name</th>
             <th id="time">Starts</th>
@@ -8,19 +8,20 @@
             <th id>Category</th>
             <th id>Location</th>
             
-        </tr>
+        </tr> 
         </thead>
         <tbody>
-           
+        #if ($participatingConferencesList)
+   			 #foreach($participatedConference in $participatingConferencesList)
             <tr data-id="1">
-                <td>Rocket Science</td>
-                <td id="time">2013-10-02</td>
-                <td id="time">2013-10-06</td>
-                <td>Physics </td>
-                <td>NASA hideout</td>
+                <td>$participatedConference.conferenceName</td>
+                <td id="time">$participatedConference.getStartDate($dateFormat)</td>
+                <td id="time">$participatedConference.getEndDate($dateFormat)</td>
+                <td> $participatedConference.categoryName</td>
+                <td>$participatedConference.location</td>
                 
             </tr>
-          
+            #end
+          #end
         </tbody>
     </table>
-#end

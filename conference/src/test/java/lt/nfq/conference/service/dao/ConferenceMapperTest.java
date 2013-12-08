@@ -30,8 +30,8 @@ public class ConferenceMapperTest extends DaoTestBase {
 	@Test
 	public void testGetConference() {
 		Conference conference = mapper.getConference(1);
-		assertEquals(Integer.valueOf(1), conference.getId());
-		assertEquals("Conference B", conference.getName());
+		assertEquals(Integer.valueOf(1), conference.getConferenceId());
+		assertEquals("Conference B", conference.getConferenceName());
 		assertEquals("2013-10-01 17:00:00", formatDate(conference.getStartDate()));
 		assertEquals("2013-10-02 18:00:00", formatDate(conference.getEndDate()));
 	}
@@ -66,15 +66,15 @@ public class ConferenceMapperTest extends DaoTestBase {
 		String endDate = "2013-11-11 12:00:00";
 
 		Conference conference = new Conference();
-		conference.setId(id);
-		conference.setName(name);
+		conference.setConferenceId(id);
+		conference.setConferenceName(name);
 		conference.setStartDate(parseDate(fromDate));
 		conference.setEndDate(parseDate(endDate));
 		assertEquals(1, mapper.updateConference(conference));
 		
 		Conference conferenceResult = mapper.getConference(id);
-		assertEquals(Integer.valueOf(id), conferenceResult.getId());
-		assertEquals(name, conferenceResult.getName());
+		assertEquals(Integer.valueOf(id), conferenceResult.getConferenceId());
+		assertEquals(name, conferenceResult.getConferenceName());
 		assertEquals(fromDate, formatDate(conferenceResult.getStartDate()));
 		assertEquals(endDate, formatDate(conferenceResult.getEndDate()));
 	}
@@ -82,8 +82,8 @@ public class ConferenceMapperTest extends DaoTestBase {
 	@Test
 	public void testUpdateConferenceNonExisting() {
 		Conference conference = new Conference();
-		conference.setId(10);
-		conference.setName("New Conference name");
+		conference.setConferenceId(10);
+		conference.setConferenceName("New Conference name");
 		conference.setStartDate(parseDate("2013-11-10 10:00:00"));
 		conference.setEndDate(parseDate("2013-11-11 12:00:00"));
 		assertEquals(0, mapper.updateConference(conference));
@@ -92,8 +92,8 @@ public class ConferenceMapperTest extends DaoTestBase {
 	@Test(expected = PersistenceException.class)
 	public void testUpdateConferenceViolatingConstraints() {
 		Conference conference = new Conference();
-		conference.setId(1);
-		conference.setName("New Conference name");
+		conference.setConferenceId(1);
+		conference.setConferenceName("New Conference name");
 		conference.setStartDate(null);
 		conference.setEndDate(null);
 		mapper.updateConference(conference);
@@ -106,16 +106,16 @@ public class ConferenceMapperTest extends DaoTestBase {
 		String endDate = "2013-11-11 12:00:00";
 
 		Conference conference = new Conference();
-		conference.setName(name);
+		conference.setConferenceName(name);
 		conference.setStartDate(parseDate(fromDate));
 		conference.setEndDate(parseDate(endDate));
 		assertEquals(1, mapper.insertConference(conference));
 		
-		Assert.assertNotNull(conference.getId());
+		Assert.assertNotNull(conference.getConferenceId());
 		
-		Conference conferenceResult = mapper.getConference(conference.getId());
-		assertEquals(conference.getId(), conferenceResult.getId());
-		assertEquals(name, conferenceResult.getName());
+		Conference conferenceResult = mapper.getConference(conference.getConferenceId());
+		assertEquals(conference.getConferenceId(), conferenceResult.getConferenceId());
+		assertEquals(name, conferenceResult.getConferenceName());
 		assertEquals(fromDate, formatDate(conferenceResult.getStartDate()));
 		assertEquals(endDate, formatDate(conferenceResult.getEndDate()));
 	}
@@ -123,7 +123,7 @@ public class ConferenceMapperTest extends DaoTestBase {
 	@Test(expected = PersistenceException.class)
 	public void testInsertConferenceViolatingConstraints() {
 		Conference conference = new Conference();
-		conference.setName("New Conference name");
+		conference.setConferenceName("New Conference name");
 		conference.setStartDate(null);
 		conference.setEndDate(null);
 		mapper.insertConference(conference);
@@ -131,7 +131,7 @@ public class ConferenceMapperTest extends DaoTestBase {
 
 	private boolean containsConference(Collection<Conference> conferences, String name, String startDate, String endDate) {
 		for (Conference conference : conferences) {
-			if (name.equals(conference.getName())
+			if (name.equals(conference.getConferenceName())
 					&& startDate.equals(formatDate(conference.getStartDate()))
 					&& startDate.equals(formatDate(conference.getStartDate()))) {
 				return true;

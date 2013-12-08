@@ -5,14 +5,14 @@
 	<th>Email address</th>
 	</thead>
 	<tbody>
-	<tr data-id="1">
-                <td>Petras</td>
-                <td>Petrauskis</td>               
-     </tr>
-     <tr data-id="2">
-                <td>Petras</td>
-                <td>Petrauskis</td>               
-     </tr>
+	#if($attendeesList)
+		#foreach($attendee in $attendeesList)
+			<tr data-id="1">
+                <td>$attendee.participantName</td>
+                <td>$attendee.participantEmail</td>               
+     		</tr>
+     	#end
+     #end
 	</tbody>
 </tr>
 
