@@ -1,0 +1,15 @@
+<legend>Main menu</legend>
+<form method="post" action="" id="login">	
+	    		<div class="formGroup">
+	                    <label for="user">Username:</label>
+	                    <input type="text" id="user" name="user"/>
+	            </div>
+	            <div class="formGroup">
+	                    <label for="pass">Password:</label>
+	                    <input type="password" id="pass" name="password"/>
+	            </div>
+	            <div class="formGroup">
+	                    <input type="submit" value="Login" id="login">
+	            </div>
+</form>	
+Still not a member?<a id="reg" href="../register">Register</a></br>

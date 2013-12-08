@@ -1,0 +1,7 @@
+<select name="categoryName" id="categoryName">
+	     					#if($categoryList)
+	          					#foreach($category in $categoryList)
+	                			<option value="$category.categoryId">$category.categoryName</option>
+	         					 #end
+	     					#end	
+</select>

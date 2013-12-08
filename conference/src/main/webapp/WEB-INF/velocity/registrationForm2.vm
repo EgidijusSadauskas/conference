@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registration form</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/resources/css/registrationStyle.css" type="text/css">
+    </head>
+    <body>
+    	<header>
+    		<p>Conferences.Usually funny,sometimes boring.</p>
+    	</header>
+        <form method="post" action="/register" object="#{Member}">
+            <fieldset>
+                <legend>User registration:</legend>
+                <div class="formGroup">
+                    <label for="fullname">Full name:</label></br>
+                    #springFormInput("member.fullName" "")</br>
+                </div>
+                <div class="formGroup">
+                    <label for="email">Email address:</label></br>
+                    #springFormInput("member.emailAddress" "")</br>
+                </div>
+                <div class="formGroup">
+                    <label for="country">Country:</label></br>
+                    #parse("location/locationsList.vm")</br>
+                </div>
+                <div class="formGroup">
+                    <label for="town">Town:</label></br>
+                    #springFormInput("member.town" "")</br>
+                </div>
+                <div class="formGroup">
+                    <label for="username">Username:</label></br>
+                    #springFormInput("member.userName" "")</br>
+                </div>
+                <div class="formGroup">
+                    <label for="pass">Password:</label></br>
+                    #springFormInput("member.password" "")</br>	
+                </div>
+                <div class="formGroup">
+                    <input type="submit" value="Register" id="register">
+                </div>
+                <a href="../" ><img id="backbutton" src="/resources/images/back.png" width=64></a>   
+            </fieldset>
+        </form>
+     
+</script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+<legend>Main menu</legend>
+#if ($sessionUsername)
+	Hello ,  $sessionUsername </br>
+	<a href="../logout">Logout</a>
+	<h3	>Conference options:</h3>
+	<!--<fieldset class="conferenceOpt">
+	    		<legend>Conference options</legend>-->
+	    		<a id="confCreation" href="./create"><img src="/resources/images/ConferenceCreation.jpg" ></a>
+	<!--</fieldset>-->
+#end

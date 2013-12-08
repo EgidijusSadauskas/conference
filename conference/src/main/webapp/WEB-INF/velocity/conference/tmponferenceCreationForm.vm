@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" type="text/css">
+        <title>Registration form</title>
+        <link rel="stylesheet" href="/resources/css/registrationStyle.css" type="text/css">
+    </head>
+    <body>
+    	<header>
+    		<p>Conferences.Usually funny,sometimes boring.</p>
+    	</header>
+        <form method="post" action="createConference" id="conf" object = #{Conference}>
+            <fieldset>
+                <legend>Conference creation:</legend>
+                <div class="formGroup">
+                    <label for="confName">Conference name:</label></br>
+                    #springFormInput("conference.conferenceName" "")</br>
+                </div>
+                 <div class="formGroup">
+                    <label for="startDate">Start date</label></br>
+                    <input type="text" name="startDate" value="$startDate" id="filterStart" class="datePicker"></br>
+                </div>
+                <div class="formGroup">
+                    <label for="endDate">End date</label></br>
+                    <input type="text" name="endDate" value="$endDate" id="filterEnd" class="datePicker"></br>
+                </div>
+                <div class="formGroup">
+                	<label for="category">Category</label></br>
+                	#parse("category/categoryList.vm")
+					</br>
+                </div>
+                <div class="formGroup">
+                    <label for="location">Location:</label></br>
+                    #springFormInput("member.location" "")</br>
+                    </br>
+                </div>
+                
+                Description:</br>
+                <textarea rows="4" cols="50" name="description" form="conf">Enter text here...
+                </textarea></br>
+                
+                <div class="formGroup">
+                    <input type="submit" value="Register" id="register">
+                </div>
+                
+                <a href="../conference/" ><img id="backbutton" src="/resources/images/back.png" width=64></a>   
+            </fieldset>
+            
+        </form>  	
+        
+        
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        	<script src="/resources/js/list.js"></script>     
+
+    </body>
+</html>
