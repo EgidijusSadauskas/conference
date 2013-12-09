@@ -9,10 +9,7 @@
     		<p>Conferences.Usually funny,sometimes boring.</p>
     	</header>
             <fieldset id="info">
-                <legend>Conference info</legend>
-                $conference.conferenceId 
-                $userId
-                
+                <legend>Conference info</legend>         
                 <div class="formGroup">
                     <label for="confName">Conference name:</label>
                     <label for="">$conference.conferenceName</label></br>
