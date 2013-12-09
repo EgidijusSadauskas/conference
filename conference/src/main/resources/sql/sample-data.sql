@@ -44,5 +44,5 @@ INSERT INTO cities(cityId,cityName,countryName) VALUES (6,'vilnius','LT');
 INSERT INTO cities(cityId,cityName,countryName) VALUES (7,'vilnius','LT');
 
 
-=
+
 COMMIT;
