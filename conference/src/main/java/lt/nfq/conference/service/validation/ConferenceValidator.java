@@ -18,11 +18,11 @@ public class ConferenceValidator implements Validator {
 		
 		Conference conference = (Conference)obj;
 		
-		// Filtering Conference Name. Escaping html code,xml , javascript and SQL.
+		// Filtering Conference Name. Escaping html , javascript .
 		String escapedConferenceName = StringEscapeUtils.escapeHtml(conference.getConferenceName());
 		escapedConferenceName = StringEscapeUtils.escapeJavaScript(escapedConferenceName);
 		
-		// Filtering Conference description . Escaping html code,xml,javascript and SQL
+		// Filtering Conference description . Escaping javascript .
 		String escapedConferenceDescription = StringEscapeUtils.escapeJavaScript(conference.getDescription());
 		
 		// Putting back into object
@@ -52,7 +52,7 @@ public class ConferenceValidator implements Validator {
 		}
 		// Validating conference location
 		if (conference.getLocation().length() < 1){
-			errors.reject("location","location does not exists");
+			errors.reject("location","location field should not be empty");
 		}
 	}
 	

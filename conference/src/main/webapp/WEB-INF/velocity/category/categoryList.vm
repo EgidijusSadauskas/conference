@@ -1,6 +1,6 @@
 <select name="category" id="category">		
 	     	#if($categoryList)
-	     			<option value="0">Category</option>
+	     			<option value="0">Any type</option>
 	          	#foreach($category in $categoryList)
 	                <option value="$category.categoryId">$category.categoryName</option>
 	         	#end

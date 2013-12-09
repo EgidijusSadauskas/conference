@@ -12,7 +12,7 @@
         <form method="post" action="/register" object="#{Member}">
             <fieldset>
                 <legend>User registration:</legend>
-                
+                * fields are required
                   <p style="color:red">
                 #foreach($error in $errorList)
                 	$error.defaultMessage </br>
@@ -20,27 +20,31 @@
                 </p>
                 
                 <div class="formGroup">
-                    <label for="fullname">Full name:</label></br>
+                    <label for="fullname">*Full name:
+                    	(should consist atleast of 10 symbols)
+                    </label></br>
                     #springFormInput("member.fullName" "")</br>
                 </div>
                 <div class="formGroup">
-                    <label for="email">Email address:</label></br>
+                    <label for="email">*Email address:</label></br>
                     #springFormInput("member.emailAddress" "")</br>
                 </div>
                 <div class="formGroup">
-                    <label for="country">Country:</label></br>
+                    <label for="country">*Country:</label></br>
                     #parse("location/locationsList.vm")</br>
                 </div>
                 <div class="formGroup">
-                    <label for="town">Town:</label></br>
+                    <label for="town">*Town:</label></br>
                     #springFormInput("member.town" "")</br>
                 </div>
                 <div class="formGroup">
-                    <label for="username">Username:</label></br>
+                    <label for="username">*Username:
+                    (should consist atleast of 8 symbols)</label></br>
                     #springFormInput("member.userName" "")</br>
                 </div>
                 <div class="formGroup">
-                    <label for="pass">Password:</label></br>
+                    <label for="pass">*Password:
+                    (password length should be atleast 10 symbols)</label></br>
                     #springFormPasswordInput("member.password" "")</br>	
                 </div>
                 <div class="formGroup">

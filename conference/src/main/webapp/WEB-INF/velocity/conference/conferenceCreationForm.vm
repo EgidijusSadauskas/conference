@@ -21,7 +21,7 @@
                 
                 </br>
                 <div class="formGroup">
-                    <label for="confName">Conference name:</label></br>
+                    <label for="confName">Conference name:(atleast 10 symbols)</label></br>
                     #springFormInput("conference.conferenceName" "")</br>
                 </div>
                  <div class="formGroup">
@@ -44,8 +44,7 @@
                 </div>
                 
                 Description:</br>
-                <textarea rows="4" cols="50" name="description" form="conf">Enter text here...
-                </textarea></br>
+                <textarea rows="4" cols="50" name="description" form="conf">Enter text here...</textarea></br>
                 
                 <div class="formGroup">
                     <input type="submit" value="Register" id="register">
