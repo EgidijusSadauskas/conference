@@ -26,11 +26,5 @@ public interface MemberMapper {
 	@Select("SELECT COUNT(*) FROM members where userName=#{userName}")
 	public int checkIfExists(@Param("userName")String userName);
 	
-	@Select("SELECT COUNT(*) FROM members where userName=#{userName} AND password=#{password}")
-	public int checkIfCorrect(@Param("userName")String userName,@Param("password")String password);
-	
-	@Select("SELECT * FROM members where userName=#{userName} AND password=#{password}")
-	public Member retrieveMember(@Param("userName")String username, @Param("password")String password);
-	
 }
 

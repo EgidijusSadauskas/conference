@@ -26,16 +26,13 @@ public class MemberService {
 	public List<Participant> getParticipants(int conferenceId) {
 		return memberMapper.getPartipatingMembers(conferenceId);
 	}
-	public int getMember(String username, String password) {	
+	public Member getMember(String username, String password) {	
 		password = PasswordFactory.getEncodedPassword(password);
 		
-		return memberMapper.checkIfCorrect(username,password);
+		return memberMapper.getMember(username,password);
 	}
 	
 	public int getMember(String userName) {
 			return memberMapper.checkIfExists(userName);
-	}
-	public Member retrieveMember(String username, String password) {
-		return memberMapper.retrieveMember(username,password);
 	}
 }

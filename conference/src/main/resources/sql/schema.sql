@@ -45,5 +45,5 @@ CREATE TABLE conferences(
  
  
 
-CREATE INDEX startDate ON conference (startDate);
-CREATE INDEX endDate ON conference (endDate);
+CREATE INDEX startDate ON conferences (startDate);
+CREATE INDEX endDate ON conferences (endDate);

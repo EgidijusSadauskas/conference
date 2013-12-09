@@ -1,14 +1,16 @@
 <legend>Main menu</legend>
-			#if ($wrongPassword)$wrongPassword
-			#end
-			
-			#if ($noSuchUser)$noSuchUser
-			#end
-			
-<form method="post" action="" id="login">	
+<form method="post" action="" id="login">
+				<div id="errorText">
+				#if($userDoesNotExists)
+					$userDoesNotExists </br>
+				#end	
+				#if($wrongPassword)
+					$wrongPassword </br>
+				#end
+				</div>
 	    		<div class="formGroup">
 	                    <label for="user">Username:</label>
-	                    <input type="text" id="user" name="username"/>
+	                    <input type="text" id="user" name="user"/>
 	            </div>
 	            <div class="formGroup">
 	                    <label for="pass">Password:</label>

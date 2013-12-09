@@ -29,10 +29,14 @@ public class LoginController {
     public String login(Model model,@RequestParam(value = "username") String username,
     					@RequestParam(value = "password") String password) {
     	
-
-    	Member member = memberService.retrieveMember(username,password);
+    	
+    	if(memberService.getMember(username) == 0){
+    		model.addAttribute("userDoesNotExists", "User does not exist");
+    		return "user/notAUser";
+    	}
+    	Member member = memberService.getMember(username, password);
     	if (member == null){
-    		System.out.println("blogas pass");
+    		model.addAttribute("wrongPassword","Wrong password");
     		return "user/notAUser";
     	}
     	
