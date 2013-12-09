@@ -1,4 +1,12 @@
 <fieldset class="menu">
+    		$wrongPassword
+    		#if($wrongPassword)
+    			$wrongPassword
+    		#end
+    		#if($noSuchUser)
+    			$noSuchUser
+    		#end
+    	
     		
     		#if($sessionUsername)
     			#parse("user/userData.vm")

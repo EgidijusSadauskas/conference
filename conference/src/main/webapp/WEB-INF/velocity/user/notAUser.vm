@@ -1,8 +1,14 @@
 <legend>Main menu</legend>
+			#if ($wrongPassword)$wrongPassword
+			#end
+			
+			#if ($noSuchUser)$noSuchUser
+			#end
+			
 <form method="post" action="" id="login">	
 	    		<div class="formGroup">
 	                    <label for="user">Username:</label>
-	                    <input type="text" id="user" name="user"/>
+	                    <input type="text" id="user" name="username"/>
 	            </div>
 	            <div class="formGroup">
 	                    <label for="pass">Password:</label>

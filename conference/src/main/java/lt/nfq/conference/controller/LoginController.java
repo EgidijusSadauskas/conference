@@ -29,12 +29,13 @@ public class LoginController {
     public String login(Model model,@RequestParam(value = "username") String username,
     					@RequestParam(value = "password") String password) {
     	
-	
-    	Member member = memberService.getMember(username,password);
+
+    	Member member = memberService.retrieveMember(username,password);
     	if (member == null){
-    		model.addAttribute("loginError","BadLogin");
+    		System.out.println("blogas pass");
     		return "user/notAUser";
     	}
+    	
     	model.addAttribute("sessionId",member.getId());
     	model.addAttribute("sessionUsername", username);
     	model.addAttribute("password", password);
