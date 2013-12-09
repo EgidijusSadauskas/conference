@@ -1,0 +1,15 @@
+<label for="town">*Town:</label></br>
+#if($cityList)
+	<select name="town" id="town">		
+	     	#if($cityList)
+	          	#foreach($city in $cityList)
+	                <option value="$city.cityName">$city.cityName</option>
+	         	#end
+	     	#end	
+	</select>
+
+#else
+	  <div class="formGroup">
+		    <input type="text" name="town"></br>
+	  </div>
+#end

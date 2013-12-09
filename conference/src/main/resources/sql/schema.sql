@@ -40,13 +40,9 @@ CREATE TABLE conferences(
  CREATE TABLE cities(
  	cityId IDENTITY PRIMARY KEY,
  	cityName VARCHAR(100) NOT NULL,
- 	townId INTEGER NOT NULL
+ 	countryName VARCHAR(10) NOT NULL
  );
  
- CREATE TABLE towns(
- 	townId IDENTITY PRIMARY KEY,
- 	townName VARCHAR(60) NOT NULL, 
- );
  
 
 CREATE INDEX startDate ON conference (startDate);

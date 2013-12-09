@@ -25,35 +25,42 @@
                     </label></br>
                     #springFormInput("member.fullName" "")</br>
                 </div>
+                
                 <div class="formGroup">
                     <label for="email">*Email address:</label></br>
                     #springFormInput("member.emailAddress" "")</br>
                 </div>
+                
                 <div class="formGroup">
                     <label for="country">*Country:</label></br>
                     #parse("location/locationsList.vm")</br>
                 </div>
-                <div class="formGroup">
-                    <label for="town">*Town:</label></br>
-                    #springFormInput("member.town" "")</br>
+                
+                <div id="town">
+	                #parse("location/cityList.vm")
                 </div>
-                <div class="formGroup">
+                <div>
                     <label for="username">*Username:
                     (should consist atleast of 8 symbols)</label></br>
                     #springFormInput("member.userName" "")</br>
                 </div>
+                
                 <div class="formGroup">
                     <label for="pass">*Password:
                     (password length should be atleast 10 symbols)</label></br>
                     #springFormPasswordInput("member.password" "")</br>	
                 </div>
+                
                 <div class="formGroup">
                     <input type="submit" value="Register" id="register">
                 </div>
+                
                 <a href="../" ><img id="backbutton" src="/resources/images/back.png" width=64></a>   
+            
             </fieldset>
         </form>
-     
-</script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    	<script src="/resources/js/location.js"></script>  
     </body>
 </html>

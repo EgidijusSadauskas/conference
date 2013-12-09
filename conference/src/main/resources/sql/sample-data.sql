@@ -31,6 +31,12 @@ INSERT INTO conference_attendees(conferenceId,userId) VALUES(5,7);
 INSERT INTO conference_attendees(conferenceId,userId) VALUES(1,7);
 INSERT INTO conference_attendees(conferenceId,userId) VALUES(1,8);
 
+INSERT INTO cities(cityId,cityName,countryName) VALUES (1,'afganistanas1','AF');
+INSERT INTO cities(cityId,cityName,countryName) VALUES (2,'afganistanas2','AF');
+INSERT INTO cities(cityId,cityName,countryName) VALUES (3,'afganistanas3','AF');
+INSERT INTO cities(cityId,cityName,countryName) VALUES (4,'kaunas','LT');
+INSERT INTO cities(cityId,cityName,countryName) VALUES (5,'vilnius','LT');
+
 INSERT INTO conferences VALUES(7,'pirmojikonferencija','ls','pirmoji legit sukurta','2013-12-08 00:00:00.000000','2013-12-18 00:00:00.000000',8);
 INSERT INTO members VALUES(8,'egidijus1','ramzzvi@gmail.com','kaunas','LS','rockas','1e6efed8a8e02519be6822a7851bb71d');
 INSERT INTO conference_categories VALUES (7,2);

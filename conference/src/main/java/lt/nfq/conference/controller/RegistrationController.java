@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import lt.nfq.conference.controller.PlainConferenceController.Form;
 import lt.nfq.conference.domain.Conference;
 import lt.nfq.conference.domain.Member;
+import lt.nfq.conference.service.LocationService;
 import lt.nfq.conference.service.MemberService;
 import lt.nfq.conference.service.validation.MemberValidator;
 
@@ -35,6 +36,9 @@ public class RegistrationController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private LocationService locationService;
+	
 	@RequestMapping(value="/register" ,method = RequestMethod.GET)
 	public String registerForm(){
 		return "registrationForm";
@@ -52,9 +56,12 @@ public class RegistrationController {
 		System.out.println(member.getFullName());
 		System.out.println(member.getCountry());
 		System.out.println(member.getTown());
+		
 		System.out.println(member.getPassword());
 		System.out.println(member.getUserName());
 		System.out.println(member.getEmailAddress());
+		
+		locationService.addCity(member.getTown(),member.getCountry());
 		
 		if (errors.getAllErrors().size() > 0){
 			model.addAttribute("errorList",errors.getAllErrors());
