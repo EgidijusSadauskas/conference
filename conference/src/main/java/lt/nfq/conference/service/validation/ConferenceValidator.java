@@ -38,13 +38,7 @@ public class ConferenceValidator implements Validator {
 		}else{
 			
 		}
-		
-		// Validating Conference category
-		try{
-			int tmpId = Integer.parseInt(conference.getCategory());
-		}catch(NumberFormatException e){
-			errors.reject("category","unknown category");
-		}
+
 		
 		// Validating Conference description
 		if (conference.getDescription().length() < 10 || conference.getDescription() == null){

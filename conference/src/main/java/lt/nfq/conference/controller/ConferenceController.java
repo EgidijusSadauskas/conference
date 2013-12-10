@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import lt.nfq.conference.domain.Conference;
-import lt.nfq.conference.domain.Member;
-import lt.nfq.conference.domain.Participant;
 import lt.nfq.conference.service.CategoryService;
 import lt.nfq.conference.service.ConferenceService;
 import lt.nfq.conference.service.MemberService;
@@ -21,7 +19,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;

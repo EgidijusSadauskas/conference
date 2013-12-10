@@ -1,14 +1,6 @@
 package lt.nfq.conference.controller;
 
 
-import java.security.MessageDigest;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.validation.Valid;
-
-import lt.nfq.conference.controller.PlainConferenceController.Form;
-import lt.nfq.conference.domain.Conference;
 import lt.nfq.conference.domain.Member;
 import lt.nfq.conference.service.LocationService;
 import lt.nfq.conference.service.MemberService;
@@ -20,14 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.Validator;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/")
